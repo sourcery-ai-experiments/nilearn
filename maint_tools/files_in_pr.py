@@ -35,7 +35,16 @@ USE_LOCAL = True
 OUTPUT_FOLDER = Path(__file__).parent / "tmp"
 OUTPUT_FILE = OUTPUT_FOLDER / "output.csv"
 
-EXCLUDE_PR = {"title": ["Format", "mypy"]}
+EXCLUDE_PR = {
+    "title": [
+        "Format",
+        "mypy",
+        "Formatting",
+        "Refactor",
+        "refactor",
+        "Simplify",
+    ]
+}
 
 # use pre-commit config "exclude / include files" config
 # to know which files are already covered by pre-commit
