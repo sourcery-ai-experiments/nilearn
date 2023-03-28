@@ -45,7 +45,7 @@ EXCLUDE_PR = {
         "Simplify",
     ]
 }
-EXCLUDE_PR = {}
+# EXCLUDE_PR = {}
 
 # use pre-commit config "exclude / include files" config
 # to know which files are already covered by pre-commit
