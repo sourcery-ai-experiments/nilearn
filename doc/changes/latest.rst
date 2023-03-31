@@ -10,16 +10,26 @@ NEW
 
 - New function :func:`~datasets.load_sample_motor_activation_image` to load example contrast map (:gh:`3498` by `Michelle Wang`_).
 
+- ``fsaverage`` meshes accessed through :func:`~datasets.fetch_surf_fsaverage` now come with flat maps for all resolutions (:gh:`3444` by `Alexis Thual`_).
+
 Fixes
 -----
 
+- Fixes several bugs in :func:`~glm.first_level.first_level_from_bids`. Refactors :func:`~glm.first_level.first_level_from_bids` and ``nilearn._utils.data_gen.create_fake_bids_dataset``. (:gh:`3525` by `Rémi Gau`_).
+
 - Change calculation of TR in :func:`~.glm.first_level.compute_regressor` to be more precise (:gh:`3362` by `Anne-Sophie Kieslinger`_)
 
+
 - :func:`~nilearn.interfaces.fmriprep.load_confounds` can support searching preprocessed data in native space. (:gh:`3531` by `Hao-Ting Wang`_)
+
+- :func:`~nilearn.second_level.non_parametric_inference` can accept first level model as input without failing. (:gh:`3600` by `Rémi Gau`_)
+
+- Add correct "zscore_sample" strategy to ``signal._standardize`` which will replace the default "zscore" strategy in release 0.13  (:gh:`3474` by `Yasmin Mzayek`_).
 
 
 Enhancements
 ------------
+
 - Updated example :ref:`sphx_glr_auto_examples_02_decoding_plot_haxby_frem.py` to include section on plotting a confusion matrix from a decoder family object (:gh:`3483` by `Michelle Wang`_).
 
 - Surface plotting methods no longer automatically rescale background maps, which, among other things, allows to use curvature sign as a background map (:gh:`3173` by `Alexis Thual`_).
