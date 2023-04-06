@@ -30,7 +30,7 @@ GH_REPO = "nilearn"
 DEBUG = False
 
 # Set to true to rely on presaved diffs
-USE_LOCAL = False
+USE_LOCAL = True
 
 OUTPUT_FOLDER = Path(__file__).parent / "tmp"
 OUTPUT_FILE = OUTPUT_FOLDER / "output.csv"
@@ -43,6 +43,7 @@ EXCLUDE_PR = {
         "Refactor",
         "refactor",
         "Simplify",
+        "IGNORE"
     ]
 }
 # EXCLUDE_PR = {}
