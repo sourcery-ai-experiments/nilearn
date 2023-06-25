@@ -43,7 +43,8 @@ EXCLUDE_PR = {
         "Refactor",
         "refactor",
         "Simplify",
-        "IGNORE"
+        "IGNORE",
+        "logger",
     ]
 }
 # EXCLUDE_PR = {}
