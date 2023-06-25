@@ -12,6 +12,7 @@ files: |
         | .*toml
         | .*yaml
         | .*yml
+        | \.git-blame.*
         | AUTHORS.rst
         | CONTRIBUTING.rst
         | LICENSE
@@ -38,7 +39,6 @@ files: |
 
 exclude: |
     (?x)^(
-        doc/changes/(names|latest).rst
         | doc/glm/first_level_model\\.rst
         | introduction\\.rst
         | maintenance\\.rst
@@ -98,7 +98,7 @@ repos:
     -   id: flynt
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.7.0
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -110,7 +110,7 @@ repos:
         args: [--config=pyproject.toml, --verbose]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.4
+    rev: v2.2.5
     hooks:
       - id: codespell
         args: [--toml=pyproject.toml]
