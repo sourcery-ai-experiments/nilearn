@@ -30,7 +30,7 @@ GH_REPO = "nilearn"
 DEBUG = False
 
 # Set to true to rely on presaved diffs
-USE_LOCAL = True
+USE_LOCAL = False
 
 OUTPUT_FOLDER = Path(__file__).parent / "tmp"
 OUTPUT_FILE = OUTPUT_FOLDER / "output.csv"
@@ -67,14 +67,12 @@ def include_from_pre_commit_config():
     with open(pre_commit_config) as f:
         config = yaml.safe_load(f)
     exclude = config["exclude"]
-    include = config["files"]
-    return include, exclude
+    return exclude
 
 
 def print_to_output(
     output_file: Path,
     all_files: list[str],
-    include_files: str,
     exclude_files: str,
 ):
     """Print all files touched by PRs to file.
@@ -95,10 +93,7 @@ def print_to_output(
     conflict_risk = []
     for file in unique_files:
         is_new.append(not (root_folder() / file).exists())
-        precommit.append(
-            re.match(exclude_files, file) is None
-            and re.match(include_files, file) is not None
-        )
+        precommit.append(re.match(exclude_files, file) is None)
         nb_occurences.append(all_files.count(file))
         conflict_risk.append(precommit[-1] is False and is_new[-1] is False)
 
@@ -280,7 +275,7 @@ def main():
             TOKEN = f.read().strip()
 
     if USE_PRE_COMMIT_CONFIG:
-        INCLUDE_FILES, EXCLUDE_FILES = include_from_pre_commit_config()
+        EXCLUDE_FILES = include_from_pre_commit_config()
 
     auth = None if USERNAME is None or TOKEN is None else (USERNAME, TOKEN)
     if not USE_LOCAL:
@@ -296,7 +291,6 @@ def main():
     print_to_output(
         output_file=OUTPUT_FILE,
         all_files=all_files,
-        include_files=INCLUDE_FILES,
         exclude_files=EXCLUDE_FILES,
     )
 
